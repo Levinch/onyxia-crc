@@ -14,29 +14,29 @@ minio:
     #  kubernetes.io/ingress.class: nginx
     path: /
     hosts:
-      - minio.lab.$DOMAIN
+      - minio.lab.apps-crc.testing
     tls:
       - hosts:
-          - minio.lab.$DOMAIN
+          - minio.lab.apps-crc.testing
   consoleIngress:
     enabled: true
     #annotations:
     #  kubernetes.io/ingress.class: nginx
     paths: /
     hosts:
-      - minio-console.lab.$DOMAIN
+      - minio-console.lab.apps-crc.testing
     tls:
       - hosts:
-          - minio-console.lab.$DOMAIN
+          - minio-console.lab.apps-crc.testing
   environment:
-    MINIO_BROWSER_REDIRECT_URL: https://minio-console.lab.$DOMAIN
+    MINIO_BROWSER_REDIRECT_URL: https://minio-console.lab.apps-crc.testing
   oidc:
     enabled: true
-    configUrl: "https://auth.lab.$DOMAIN/auth/realms/datalab/.well-known/openid-configuration"
+    configUrl: "https://auth.lab.apps-crc.testing/auth/realms/datalab/.well-known/openid-configuration"
     clientId: "minio"
     claimName: "policy"
     scopes: "openid,profile,email"
-    redirectUri: "https://minio-console.lab.$DOMAIN/oauth_callback"
+    redirectUri: "https://minio-console.lab.apps-crc.testing/oauth_callback"
     claimPrefix: ""
     comment: ""
     clientSecret: $KEYCLOAK_MINIO_CLIENT_SECRET
